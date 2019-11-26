@@ -1,0 +1,17 @@
+<?php if (!empty($block->getListImageCategory(array(1,2)))): ?>
+    <div class="gallery-title"><h2><span style="font-weight: bold"><?= $block->getGalleryTitleCategory(array(1,2)) ?></span></h2></div>
+    <div class="slider autoplayfooter">
+        <?php foreach ($block->getListImageCategory(array(1,2)) as $image): ?>
+            <div class="image-item">
+                <img
+                        alt=""
+                        class="imageslider"
+                        src="<?php echo $block->getMediaUrl() . $block->loadImage($image)->getData('image'); ?>"/>
+                <input class="image_id" type="hidden" value="<?= $block->loadImage($image)->getData('image_id'); ?>">
+                <input class="position_slider" type="hidden" value="footer">
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+

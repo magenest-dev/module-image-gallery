@@ -1,0 +1,225 @@
+<div class="gallery_description"><?= $block->getCurrentGalleryDescription() ?></div>
+<div class="tab">
+    <select class="tablinks">
+        <option value="0">All Gallery</option>
+        <?php foreach ($block->getGalleryCollection() as $galcol): ?>
+            <option value="<?= $galcol['gallery_id'] ?>"><?= $galcol['title'] ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<div class="social-share-gallery fixed-social-button">
+    <div class="popup-socical-share">
+        <i class="popup-facebook-share-all">
+            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/facebook-svg.svg'); ?>" alt="Social icon"/>
+        </i>
+        <i class="popup-pinterest-share-all">
+            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/pinterest-svg.svg'); ?>" alt="Social icon"/>
+        </i>
+        <i class="popup-twitter-share-all">
+            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/twitter-svg.svg'); ?>" alt="Social icon"/>
+        </i>
+    </div>
+</div>
+
+<div id="instagram-gallery">
+    <div id="instagram-type" class="widget-normal-timeline widget-desktop widget-wrapper widget-lookbook <?= $block->getCurrentLayoutType() ?>">
+        <?php $count = 0; ?>
+        <?php foreach ($block->getAllImageFromGalleries() as $image): ?>
+            <div class="widget-timeline" id="image_<?= $image['image_id'] ?>">
+                <div class="widget-entry-container">
+                    <div class="widget-timeline-entry <?= $block->getHoverEffect() ?>"
+                         style="cursor: pointer; background-image: url('<?= $block->getMediaUrl() . $image['image'] ?>' );">
+                        <div class="widget-text-container">
+                                <div class="widget-service-icon"><i class="fa fa-heart love-icon"
+                                                                    style="color:<?= $image['color'] ?>"></i>
+                                </div>
+                            <div class="widget-timeline-text">
+                                <div class="widget-entry-title"><span class="love-number"><?= $image['love'] ?></span>
+                                    <?php if ($image['love'] > 1): ?>
+                                        <span class="word">likes</span>
+                                    <?php else: ?>
+                                        <span class="word">like</span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-text-container">
+                    <div class="widget-service-icon">
+                        <?php if ($image['color'] == 'white'): ?>
+                        <i class="fa fa-heart fa-heart-o love-icon-res"
+                                                        style="color:red"></i>
+                        <?php else: ?>
+                            <i class="fa fa-heart love-icon-res"
+                               style="color:<?= $image['color'] ?>"></i>
+                        <?php endif; ?>
+                    </div>
+                    <div class="widget-timeline-text">
+                        <div class="card-footer">
+                            <div class="widget-entry-title"><span class="love-number"><?= $image['love'] ?></span>
+                                <?php if ($image['love'] > 1): ?>
+                                    <span class="word">likes</span>
+                                <?php else: ?>
+                                    <span class="word">like</span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="viewproduct-btn">
+                        <a href="#"> View Product</a>
+                    </div>
+                </div>
+                <input type="hidden" value="<?= $image['image_id'] ?>" class="image_id">
+                <input type="hidden" value="<?= $image['product_id'] ?>" class="product_id">
+            </div>
+            <?php $count++; ?>
+            <?php if ($count == 8) : ?>
+                <?php break; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<div class="image-for-pinterest" style="display: none">
+    <?php foreach ($block->getAllImageFromGalleries() as $image): ?>
+        <img src="<?php echo $block->getMediaUrl() . $image['image'] ?>" alt=""/>
+    <?php endforeach; ?>
+</div>
+
+<style>
+    #popup-modal {
+        display: none;
+    }
+
+    .popup-image-current {
+        width: 500px;
+        height: 400px;
+    }
+
+    .image-slide-show {
+        width: 50px;
+        height: 50px;
+    }
+
+    .border-for-image {
+        border: solid 2px red !important;
+    }
+</style>
+<div id="popup-modal">
+    <div id="popup-modal-main">
+        <div class="popup-image_url">
+            <button class="previous-button btn-control-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/back.svg'); ?>" alt="Arrow Left"/>
+            </button>
+            <img class="popup-image-current" src="" alt="Image-Gallery"/>
+            <button class="next-button btn-control-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/next.svg'); ?>" alt="Arrow Left"/>
+            </button>
+        </div>
+
+        <div class="main-content-gallery">
+            <div class="headding-title">
+                <div class="content-primary">
+                    <div class="popup-image-title">
+                        <h2><span style="font-weight: bold" class="image-title"></span></h2>
+                    </div>
+
+                    <div class="content-secondary">
+                        <div class="popup-socical-share">
+                            <i class="popup-facebook-share">
+                                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/facebook-svg.svg'); ?>" alt="Social icon"/>
+                            </i>
+                            <i class="popup-pinterest-share">
+                                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/pinterest-svg.svg'); ?>" alt="Social icon"/>
+                            </i>
+                            <i class="popup-twitter-share">
+                                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/twitter-svg.svg'); ?>" alt="Social icon"/>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="popup-view-product">
+                        <a class="popup-link-product">View Product</a>
+                    </div>
+                </div>
+
+                <div class="content-secondary">
+                    <div class="popup-socical-share">
+                        <i class="popup-facebook-share">
+                            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/facebook-svg.svg'); ?>" alt="Social icon"/>
+                        </i>
+                        <i class="popup-pinterest-share">
+                            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/pinterest-svg.svg'); ?>" alt="Social icon"/>
+                        </i>
+                        <i class="popup-twitter-share">
+                            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/twitter-svg.svg'); ?>" alt="Social icon"/>
+                        </i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-image-description">
+                <span class="image-description"></span>
+            </div>
+
+            <div class="popup-love">
+                <i class="fa fa-heart popup-love-icon"></i>
+                <span style="font-weight: bold" class="popup-love-number"></span>
+                <span style="font-weight: bold" class="popup-word"> likes</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-index-image"><span class="current-index"></span>/<span class="total-images"></span> images</div>
+
+
+    <div class="popup-small-slideshow">
+        <div class="previous-button-slideshow btn-control-images">
+            <button class="previous-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/back.svg'); ?>" alt="Arrow Left"/>
+            </button>
+        </div>
+        <div class="thumbnail-image-container">
+            <img id="slideshow0" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow1" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow2" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow3" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow4" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow5" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow6" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow7" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow8" class="image-slide-show" alt="" src=""/>
+        </div>
+        <div class="next-button-slideshow btn-control-images">
+            <button class="next-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/next.svg'); ?>" alt="Arrow Right"/>
+            </button>
+        </div>
+    </div>
+
+    <input class="popup-image_id" type="hidden" value="">
+    <input class="popup-product_id" type="hidden" value="">
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magenest_ImageGallery/js/view/gallerypage": {
+                "list_image" : <?= json_encode($block->getAllImageFromGalleries()) ?>,
+                "checkLogin" : <?= $block->checkLogin() ?>,
+                "loginUrl" : "<?= $block->getUrl('customer/account/login/') ?>",
+                "getListImageUrl" : "<?php echo $block->getUrl('imagegallery/gallery/getlistimage'); ?>",
+                "imageUrl" : "<?php echo $block->getMediaUrl(); ?>",
+                "hoverEffect" : "<?= $block->getHoverEffect() ?>",
+                "image_id_request" : "<?= $block->getImageIdRequest() ?>",
+                "urlKey" : "<?= $block->getUrlKey() ?>",
+                "loveUrl" : "<?php echo $block->getUrl('imagegallery/gallery/love'); ?>",
+                "gallery_id_request" : "<?= $block->getGalleryIdRequest() ?>",
+                "list_image_popup" : <?= json_encode($block->getAllImageFromGalleries()) ?>,
+                "magento_version" : "<?= $block->getMagentoVersion() ?>"
+            }
+        }
+    }
+</script>

@@ -1,0 +1,13 @@
+<script>
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            $(document).on('click','.widget-timeline-entry',function () {
+                $('.widget-timeline-entry').css('display','none');
+            });
+
+            $('#popup-modal').on('modalclosed', function() {
+                $('.widget-timeline-entry').css('display','inline-block');
+            });
+        });
+    });
+</script>

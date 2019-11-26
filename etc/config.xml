@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <imagegallery>
+            <gallerypage>
+                <enablefullgallery>1</enablefullgallery>
+                <numberimageslider>10</numberimageslider>
+            </gallerypage>
+            <galleryhover>
+                <animationtype>0</animationtype>
+                <speed>1</speed>
+            </galleryhover>
+        </imagegallery>
+    </default>
+</config>

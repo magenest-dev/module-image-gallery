@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magenest\ImageGallery\Block\Adminhtml\Gallery\Edit" name="imagegallery_gallery_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magenest\ImageGallery\Block\Adminhtml\Gallery\Edit\Tabs" name="imagegallery_gallery_edit_tabs">
+            </block>
+        </referenceContainer>
+        <referenceContainer name="js">
+            <block class="Magenest\ImageGallery\Block\Adminhtml\Gallery\Edit\Js" template="js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

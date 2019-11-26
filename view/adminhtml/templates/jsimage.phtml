@@ -1,0 +1,17 @@
+<?php /** @var $block  \Magenest\ImageGallery\Block\Adminhtml\Gallery\Edit\Js */ ?>
+<script type='text/javascript'>
+    require([
+        "jquery"
+    ], function ($) {
+        $(document).on('click','.link_product',function () {
+            if ($("input[name='link_product']:checked").val() === $('#page_product_id').val())
+            {
+                $(this).prop('checked', false);
+                $('#page_product_id').val(null);
+            }
+            else
+                $('#page_product_id').val($("input[name='link_product']:checked").val());
+        });
+        $("#page_image_image").css({'width':'150px','height':'150px'});
+    });
+</script>

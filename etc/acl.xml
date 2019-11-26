@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magenest_ImageGallery::gallerysetting" title="Image Gallery Settings"/>
+                        </resource>
+                    </resource>
+                </resource>
+
+                <resource id="Magenest_ImageGallery::imagegallery" title="Image Gallery">
+                    <resource id="Magenest_ImageGallery::image" title="Manage Images"/>
+                    <resource id="Magenest_ImageGallery::gallery" title="Manage Gallery"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

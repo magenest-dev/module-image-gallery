@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magenest\ImageGallery\Model\ResourceModel\Grid\Image" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_image_gallery_image</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\ImageGallery\Model\ResourceModel\Image</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magenest\ImageGallery\Model\ResourceModel\Grid\Gallery" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_image_gallery_gallery</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\ImageGallery\Model\ResourceModel\Gallery</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magenest\ImageGallery\Model\ResourceModel\Grid\Group" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_image_gallery_gallery_group</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\ImageGallery\Model\ResourceModel\Group</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="imagegallery_image_listing_data_source" xsi:type="string">Magenest\ImageGallery\Model\ResourceModel\Grid\Image</item>
+                <item name="imagegallery_gallery_listing_data_source" xsi:type="string">Magenest\ImageGallery\Model\ResourceModel\Grid\Gallery</item>
+                <item name="imagegallery_group_listing_data_source" xsi:type="string">Magenest\ImageGallery\Model\ResourceModel\Grid\Group</item>
+
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="topmenu.imagegallery" type="Magenest\ImageGallery\Plugin\Topmenu" sortOrder="1" disabled="false"/>
+    </type>
+</config>

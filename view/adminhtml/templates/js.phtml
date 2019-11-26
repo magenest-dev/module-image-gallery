@@ -1,0 +1,77 @@
+<?php /** @var $block  \Magenest\ImageGallery\Block\Adminhtml\Gallery\Edit\Js */ ?>
+<script type='text/javascript'>
+    require([
+        "jquery"
+    ], function ($) {
+
+        if(!$('#page_width').val())
+            $('#page_width').val('100');
+
+        if(!$('#page_height').val())
+            $('#page_height').val('200');
+
+        if(!$('#page_number_image_slider').val())
+            $('#page_number_image_slider').val('6');
+
+        function getImageId() {
+            var images = $("#page_image_id3").val();
+            if (images != null)
+                images = images.split(",");
+            if (images != "")
+                return images;
+            else
+                return [];
+        }
+
+        function setImageId(array) {
+            $("#page_image_id3").val(array.join());
+        }
+
+        $(document).on('change','.checkbox_image',function () {
+            var array =  getImageId();
+            if ($(this).is(':checked') == true) {
+                array.push($(this).val());
+                setImageId(array);
+
+            } else {
+
+                var index = array.indexOf($(this).val());
+                if (index > -1) {
+                    array.splice(index, 1);
+                }
+                setImageId(array);
+
+            }
+        });
+
+        $("#page_description2").val($('#page_description').val());
+        $("#page_description2").change(function () {
+            $("#page_description").val($('#page_description2').val());
+        });
+
+        $(document).on('click','.attach_products',function () {
+            if ($("input[name='attach_products']:checked").val() === $('#page_product_id').val())
+            {
+                $(this).prop('checked', false);
+                $('#page_product_id').val(0);
+            }
+            else
+                $('#page_product_id').val($("input[name='attach_products']:checked").val());
+        });
+
+        $('#page_image_id2').val($('#page_image_id3').val());
+
+        $(document).ajaxSuccess(function () {
+            var list_image1 = $('#page_image_id3').val().split(",");
+            var list_image2 = $('#page_image_id2').val().split(",");
+            var list_image_eliminate = list_image2.filter(x => !list_image1.includes(x)).concat(list_image1.filter(x => !list_image2.includes(x)));
+
+            $.each(list_image_eliminate,function (index,value) {
+                if ($('#choose_image_'+value).is(":checked"))
+                    $('#choose_image_'+value).prop('checked', false);
+                else
+                    $('#choose_image_'+value).attr('checked', 'checked');
+            });
+        });
+    });
+</script>

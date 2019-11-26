@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_ImageGallery::imagegallery" title="ImageGallery" module="Magenest_ImageGallery" sortOrder="50" resource="Magenest_ImageGallery::imagegallery"/>
+        <add id="Magenest_ImageGallery::image" title="Manage Images" module="Magenest_ImageGallery" sortOrder="10" parent="Magenest_ImageGallery::imagegallery" action="imagegallery/image/" resource="Magenest_ImageGallery::image"/>
+        <add id="Magenest_ImageGallery::gallery" title="Manage Gallery" module="Magenest_ImageGallery" sortOrder="20" parent="Magenest_ImageGallery::imagegallery" action="imagegallery/gallery" resource="Magenest_ImageGallery::gallery"/>
+        <add id="Magenest_ImageGallery::gallerysetting" title="Gallery Settings" module="Magenest_ImageGallery" sortOrder="40" parent="Magenest_ImageGallery::imagegallery" action="adminhtml/system_config/edit/section/imagegallery" resource="Magenest_ImageGallery::gallerysetting"/>
+    </menu>
+</config>

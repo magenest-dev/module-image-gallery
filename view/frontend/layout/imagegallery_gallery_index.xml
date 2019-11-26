@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magenest_ImageGallery::css/font-awesome.css"/>
+        <css src="Magenest_ImageGallery::css/gallery/style.css"/>
+        <css src="Magenest_ImageGallery::css/widget.css"/>
+    </head>
+    <body>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Magenest\ImageGallery\Block\Gallery\Gallerypage" name="landingsblock"
+                   template="Magenest_ImageGallery::gallery/gallerypage.phtml" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block name="jquery.js" template="Magenest_ImageGallery::jquery-js.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="head.additional">
+            <block class="Magenest\ImageGallery\Block\Gallery\Gallerypage" name="metatags" template="Magenest_ImageGallery::gallery/tags.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

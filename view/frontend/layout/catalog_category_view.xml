@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magenest_ImageGallery::css/slick.css"/>
+        <css src="Magenest_ImageGallery::css/slick-theme.css"/>
+        <css src="Magenest_ImageGallery::css/font-awesome.css"/>
+    </head>
+    <body>
+        <referenceContainer name="columns.top">
+            <referenceContainer name="category.view.container">
+                <block class="Magenest\ImageGallery\Block\Slider" name="category.slider.header" template="Magenest_ImageGallery::categoryslidertop.phtml" cacheable="false"/>
+            </referenceContainer>
+        </referenceContainer>
+        <referenceContainer name="page.bottom.container">
+            <block class="Magenest\ImageGallery\Block\Slider" name="category.slider.footer"
+                   template="categorysliderfooter.phtml" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block name="jquery.js" template="Magenest_ImageGallery::jquery-js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

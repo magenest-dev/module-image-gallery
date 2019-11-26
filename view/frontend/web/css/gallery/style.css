@@ -1,0 +1,279 @@
+/*
+ *
+  * Copyright © 2018 Magenest. All rights reserved.
+  * See COPYING.txt for license details.
+  *
+  * Magenest_InstagramShop extension
+  * NOTICE OF LICENSE
+  *
+  * @category Magenest
+  * @package  Magenest_InstagramShop
+  * @author    dangnh@magenest.com
+
+ */
+
+div.gallery-nav {
+    min-height: 35px;
+    display: inline-block;
+}
+div.gallery-url {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    border: 1px solid black;
+    text-align: center;
+    min-width: 100px;
+    padding: 0 20px;
+    margin-right: 20px;
+    background-color: black;
+    color: white;
+    -webkit-box-shadow: 2px 2px 2px 2px #ccc;
+    -moz-box-shadow: 2px 2px 2px 2px #ccc;
+    box-shadow: 2px 2px 2px 2px #ccc;
+}
+
+div.gallery-url:hover {
+    display: block;
+    background: white;
+    color: black;
+}
+
+div.chosen {
+    background: white;
+    color: black;
+}
+
+div.photos-wrapper {
+    clear: both;
+    margin-top: 30px;
+    margin-left: 0;
+    width: 100%;
+    min-width: 1230px;
+    min-height: 150px;
+    padding: 0;
+}
+
+div.box {
+    border: 5px solid #fff;
+    cursor: pointer;
+    height: 420px;
+    float: left;
+    margin: 0 10px 10px 0;
+    position: relative;
+    overflow: hidden;
+    width: 390px;
+    -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+    -moz-box-shadow: 1px 1px 1px 1px #ccc;
+    box-shadow: 1px 1px 1px 1px #ccc;
+}
+
+div.box ul {
+    height: 22px;
+    width: 150px;
+    margin: 100% auto;
+    list-style: none;
+    padding-top: 5px;
+}
+
+div.box ul li {
+    float: left;
+}
+
+.likes, .comments {
+    height: 17px;
+    width: 17px;
+    margin-right: 3px;
+}
+
+.likes-number, .comments-number {
+    /* height: 15px; */
+    margin-top: -1px;
+    min-width: 22px;
+    margin-right: 15px;
+    line-height: 22px;
+    font-size: 18px;
+    color: black;
+}
+
+.likes {
+    background: url('../images/likes.jpg') no-repeat center;
+    background-size: contain;
+}
+
+.comments {
+    background: url('../images/comments.jpg') no-repeat center;
+    background-size: contain;
+}
+
+div.box img {
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    left: 0;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+}
+
+div.box .caption {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    color: #fff;
+    z-index: 100;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    width: 330px;
+    height: 330px;
+    text-align: left;
+    padding: 30px;
+    left: 390px;
+    overflow: scroll;
+}
+
+div.box:hover .caption {
+    background-color: rgba(0, 0, 0, 1) !important;
+    -moz-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    opacity: 0.8;
+    transform: translateX(-100%);
+}
+
+.caption::-webkit-scrollbar {
+    width: 5px;
+}
+
+.caption::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.caption::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: darkgray;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.caption::-webkit-scrollbar-thumb:window-inactive {
+    background-color: darkgray;
+}
+
+.bottom-right {
+    font-size: 12px;
+    color: darkgray;
+    position: absolute;
+    bottom: 0px;
+    right: 16px;
+}
+/*Change magento style for fit with extension*/
+strong.logo, .block.block-search, nav.navigation {
+    z-index: 0;
+}
+
+/*Main css for shopping page*/
+.grid-stack-item-content {
+    color: #2c3e50;
+    text-align: center;
+}
+
+.ui-state-disabled {
+    opacity: 1 !important;
+    cursor: default !important;
+    pointer-events: auto !important;
+}
+
+.grid-stack-item-content img {
+    height: 100%;
+}
+
+.qs-loading-wrap {
+    align-self: center;
+    top: 45%;
+    left: 45%;
+    position: absolute;
+    z-index: 3000;
+}
+@media only screen and (max-width: 767px) {
+    .widget-normal-timeline .widget-entry-container{
+        width: 50%;
+        padding-top: 50%;
+    }
+}
+
+/*
+*** Gallery Grid Layout
+*/
+.gallery-grid:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.gallery-grid .widget-timeline{
+    margin: 0;
+    padding: 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.gallery-grid .widget-timeline .widget-entry-container{
+    width: 100%;
+    padding: 0 0 100%;
+}
+@media (min-width: 768px){
+    .gallery-grid .widget-timeline:nth-child(9n+1){
+        width: 40%;
+        float: left;
+    }
+    .gallery-grid .widget-timeline:nth-child(9n+2),
+    .gallery-grid .widget-timeline:nth-child(9n+3),
+    .gallery-grid .widget-timeline:nth-child(9n+4),
+    .gallery-grid .widget-timeline:nth-child(9n+5){
+        width: 20%;
+        float: left;
+    }
+    .gallery-grid .widget-timeline:nth-child(9n+6){
+        width: 40%;
+        float: right;
+    }
+    .gallery-grid .widget-timeline:nth-child(9n+7),
+    .gallery-grid .widget-timeline:nth-child(9n+8),
+    .gallery-grid .widget-timeline:nth-child(9n){
+        width: 20%;
+        float: right;
+    }
+}
+@media (max-width: 767px){
+    .gallery-grid .widget-timeline:nth-child(12n+1){
+        width: 66.6%;
+        float: left;
+    }
+    .gallery-grid .widget-timeline:nth-child(12n+2),
+    .gallery-grid .widget-timeline:nth-child(12n+3),
+    .gallery-grid .widget-timeline:nth-child(12n+4),
+    .gallery-grid .widget-timeline:nth-child(12n+5),
+    .gallery-grid .widget-timeline:nth-child(12n+6),
+    .gallery-grid .widget-timeline:nth-child(12n+9),
+    .gallery-grid .widget-timeline:nth-child(12n+10),
+    .gallery-grid .widget-timeline:nth-child(12n+11),
+    .gallery-grid .widget-timeline:nth-child(12n){
+        width: 33.33333333333333333333333333333333333%;
+        float: left;
+    }
+    .gallery-grid .widget-timeline:nth-child(12n+7){
+        width: 66.6%;
+        float: right;
+    }
+    .gallery-grid .widget-timeline:nth-child(12n+7) .widget-entry-container{
+        padding-bottom: calc(100% + 1px);
+    }
+    .gallery-grid .widget-timeline:nth-child(12n+8){
+        width: 33.33333333333333333333333333333333333%;
+        float: right;
+    }
+}

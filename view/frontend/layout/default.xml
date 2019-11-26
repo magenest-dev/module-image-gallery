@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="footer_links">
+            <block class="Magenest\ImageGallery\Block\Gallery\Gallerypage" name="imagegallery-link"
+                   ifconfig="imagegallery/gallerypage/enablefullgallery"
+                   template="Magenest_ImageGallery::photolink.phtml">
+            </block>
+        </referenceBlock>
+    </body>
+</page>

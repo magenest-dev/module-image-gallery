@@ -1,0 +1,215 @@
+<style>
+    .imageslider {
+        height: <?= $block->getHeightOfProductGallery() ?>px !important;
+        margin: auto;
+        width: <?= $block->getHeightOfProductGallery() ?>px !important;
+        object-fit: cover;
+    }
+
+    .autoplay {
+        display: none;
+        width: <?= $block->getWidhtOfProductGallery() ?>% !important;
+        margin: 0 auto;
+    }
+
+    .gallery-title{
+        text-align: center;
+    }
+
+</style>
+
+<?php if (!empty($block->getListImageProduct())): ?>
+    <div class="gallery-title"><h2><span style="font-weight: bold"><?= $block->getGalleryTitleProduct() ?></span></h2></div>
+    <div class="slider autoplay">
+        <?php foreach ($block->getListImageProduct() as $image): ?>
+            <div class="image-item">
+                <img
+                            alt=""
+                            class="imageslider"
+                            src="<?php echo $block->getMediaUrl() . $block->loadImage($image)->getData('image'); ?>"/>
+                <input class="image_id" type="hidden" value="<?= $block->loadImage($image)->getData('image_id'); ?>">
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+<style>
+    #popup-modal{
+        display: none;
+    }
+    .popup-image-current{
+        width: 500px;
+        height: 400px;
+    }
+    .image-slide-show
+    {
+        width: 50px;
+        height: 50px;
+    }
+    .border-for-image
+    {
+        border: solid 2px red !important;
+    }
+</style>
+
+<div id="popup-modal">
+    <div id="popup-modal-main">
+        <div class="popup-image_url">
+            <button class="previous-button btn-control-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/back.svg'); ?>" alt="Arrow Left"/>
+            </button>
+            <img class="popup-image-current" src="" alt="Image-Gallery"/>
+            <button class="next-button btn-control-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/next.svg'); ?>" alt="Arrow Left"/>
+            </button>
+        </div>
+
+        <div class="main-content-gallery">
+            <div class="headding-title">
+                <div class="content-primary">
+                    <div class="popup-image-title">
+                        <h2><span style="font-weight: bold" class="image-title"></span></h2>
+                    </div>
+
+                    <div class="content-secondary">
+                        <div class="popup-socical-share">
+                            <i class="popup-facebook-share">
+                                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/facebook-svg.svg'); ?>" alt="Social icon"/>
+                            </i>
+                            <i class="popup-pinterest-share">
+                                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/pinterest-svg.svg'); ?>" alt="Social icon"/>
+                            </i>
+                            <i class="popup-twitter-share">
+                                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/twitter-svg.svg'); ?>" alt="Social icon"/>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="popup-view-product">
+                        <a class="popup-link-product">View Product</a>
+                    </div>
+                </div>
+
+                <div class="content-secondary">
+                    <div class="popup-socical-share">
+                        <i class="popup-facebook-share">
+                            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/facebook-svg.svg'); ?>" alt="Social icon"/>
+                        </i>
+                        <i class="popup-pinterest-share">
+                            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/pinterest-svg.svg'); ?>" alt="Social icon"/>
+                        </i>
+                        <i class="popup-twitter-share">
+                            <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/twitter-svg.svg'); ?>" alt="Social icon"/>
+                        </i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-image-description">
+                <span class="image-description"></span>
+            </div>
+
+            <div class="popup-love">
+                <i class="fa fa-heart popup-love-icon"></i>
+                <span style="font-weight: bold" class="popup-love-number"></span>
+                <span style="font-weight: bold" class="popup-word"> likes</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-index-image"><span class="current-index"></span>/<span class="total-images"></span> images</div>
+
+
+    <div class="popup-small-slideshow">
+        <div class="previous-button-slideshow btn-control-images">
+            <button class="previous-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/back.svg'); ?>" alt="Arrow Left"/>
+            </button>
+        </div>
+        <div class="thumbnail-image-container">
+            <img id="slideshow0" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow1" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow2" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow3" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow4" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow5" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow6" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow7" class="image-slide-show" alt="" src=""/>
+            <img id="slideshow8" class="image-slide-show" alt="" src=""/>
+        </div>
+        <div class="next-button-slideshow btn-control-images">
+            <button class="next-slide">
+                <img src="<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/next.svg'); ?>" alt="Arrow Right"/>
+            </button>
+        </div>
+    </div>
+
+
+    <input class="popup-image_id" type="hidden" value="">
+    <input class="popup-product_id" type="hidden" value="">
+</div>
+
+<script>
+    require([
+            'jquery',
+            'Magenest_ImageGallery/js/view/slick'
+        ], function ($) {
+
+            $(document).ready(function () {
+                $('.autoplay').show();
+            });
+
+            $('.autoplay').slick({
+                slidesToShow: <?= $block->getNumberImageSliderProduct() ?>,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                infinite: true,
+                draggable: false,
+                prevArrow: "<img class='slick-prev' src=\"<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/back.svg'); ?>\" alt=\"Arrow Left\"/>",
+                nextArrow: "<img class='slick-next' src=\"<?php echo $this->getViewFileUrl('Magenest_ImageGallery::images/next.svg'); ?>\" alt=\"Arrow Right\"/>",
+
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        }
+                    }
+                ]
+            });
+        }
+    );
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magenest_ImageGallery/js/view/light-box": {
+                "list_image_popup" : <?= json_encode($block->getListImageProductCollection()) ?>,
+                "mediaUrl" : "<?= $block->getMediaUrl() ?>",
+                "urlKey" : "<?= $block->getUrlKey() ?>",
+                "gallery_id_product" : "<?= $block->getGalleryIdProduct() ?>",
+                "loveUrl" : "<?php echo $block->getUrl('imagegallery/gallery/love'); ?>",
+                "magento_version" : "<?= $block->getMagentoVersion() ?>",
+                "checkLogin" : <?= $block->checkLogin() ?>
+            }
+        }
+    }
+</script>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="500">
+            <label>Magenest</label>
+        </tab>
+        <section id="imagegallery" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Image Gallery</label>
+            <tab>magenest</tab>
+            <resource>Magenest_ImageGallery::gallerysetting</resource>
+            <group id="gallerypage" translate="label" type="text" sortOrder="1" showInDefault="1">
+                <label>Gallery Settings</label>
+                <field id="enablefullgallery" translate="label" type="select" sortOrder="30" showInDefault="1">
+                    <label>Enable full gallery :</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="galleryseoconfig" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>SEO configuration</label>
+                <field id="urlkey" translate="label" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Url Key</label>
+                    <validate>validate-length maximum-length-100</validate>
+                </field>
+                <field id="metatitle" translate="label" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Title</label>
+                    <validate>validate-length maximum-length-60</validate>
+                </field>
+                <field id="metakeywords" translate="label" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>
+                    <validate>validate-length maximum-length-255</validate>
+                </field>
+                <field id="metadescription" translate="label" type="textarea" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                    <comment>Maximum 255 chars. Meta Description should optimally be between 150-160 characters</comment>
+                    <validate>validate-length maximum-length-255</validate>
+                </field>
+            </group>
+
+            <group id="galleryhover" translate="label" type="text" sortOrder="1" showInDefault="1">
+                <label>Gallery Hover Effect</label>
+                <field id="animationtype" translate="label" type="select" sortOrder="30" showInDefault="1">
+                    <label>Animation type :</label>
+                    <source_model>Magenest\ImageGallery\Model\Config\Source\AnimationType</source_model>
+                </field>
+
+                <field id="speed" translate="label" type="select" sortOrder="30" showInDefault="1">
+                    <label>Speed :</label>
+                    <source_model>Magenest\ImageGallery\Model\Config\Source\AnimationSpeed</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
